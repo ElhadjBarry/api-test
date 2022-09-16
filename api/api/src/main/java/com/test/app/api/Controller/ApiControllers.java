@@ -18,7 +18,7 @@ public class ApiControllers {
     private UserRepo userRepo;
     @GetMapping("/")
     public String getPage(){
-        return "Bienvenue!";
+        return "API FOR TEST!";
     }
     @GetMapping(value="/users")
     public List<User> getUsers(){
@@ -28,7 +28,6 @@ public class ApiControllers {
     public ResponseEntity<User>  saveUser(@RequestBody User user){
         if (user.getCountry().toLowerCase() == "france" && user.getBirthdate() >= 18){
             userRepo.save(user);
-            System.out.println(user.getCountry().toLowerCase());
             if (userRepo != null){
                 return  new ResponseEntity<User>(user, HttpStatus.OK);
             }else{
