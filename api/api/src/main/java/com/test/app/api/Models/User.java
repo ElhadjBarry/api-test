@@ -14,7 +14,7 @@ public class User {
     @Column
     private String name;
     @Column
-    private String birthdate ;
+    private int birthdate ;
     @Column
     private String country;
     @Column
@@ -22,7 +22,7 @@ public class User {
     @Column
     private String gender ;
 
-    public User(long id, String email, String name, String birthdate, String country, int phone, String gender) {
+    public User(long id, String email, String name, int birthdate, String country, int phone, String gender) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -60,11 +60,11 @@ public class User {
         this.name = name;
     }
 
-    public String getBirthdate() {
+    public int getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(int birthdate) {
         this.birthdate = birthdate;
     }
 

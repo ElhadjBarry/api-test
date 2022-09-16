@@ -26,11 +26,17 @@ public class ApiControllers {
     }
     @PostMapping(value = "/save")
     public ResponseEntity<User>  saveUser(@RequestBody User user){
-        userRepo.save(user);
-        if (userRepo != null){
-            return  new ResponseEntity<User>(user, HttpStatus.OK);
+        if (user.getCountry().toLowerCase() == "france" && user.getBirthdate() >= 18){
+            userRepo.save(user);
+            System.out.println(user.getCountry().toLowerCase());
+            if (userRepo != null){
+                return  new ResponseEntity<User>(user, HttpStatus.OK);
+            }else{
+                return  new ResponseEntity<User>(user, HttpStatus.BAD_REQUEST);
+            }
         }else{
             return  new ResponseEntity<User>(user, HttpStatus.BAD_REQUEST);
         }
+
     }
 }
